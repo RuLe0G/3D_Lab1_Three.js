@@ -75,32 +75,32 @@ renderer.render( scene, camera );
 
 function addG()
 {
-for (var j = 0; j < N; j++)
-for (var i = 0; i < N; i++) {
+    for (var j = 0; j < N; j++)
+    for (var i = 0; i < N; i++) {
 
-geometry.vertices.push(new THREE.Vector3(  i, 0.0, j));
-}
+    geometry.vertices.push(new THREE.Vector3(  i, 0.0, j));
+    }
 
 
 for (var j = 0; j < N-1; j++)
 for (var i = 0; i < N-1; i++)
 {
-var i1 = i + j*N;
-var i2 = (i+1) + j*N;
-var i3 = i + (j+1)*N;
-var i4 = (i+1) + (j+1)*N;
+    var i1 = i + j*N;
+    var i2 = (i+1) + j*N;
+    var i3 = i + (j+1)*N;
+    var i4 = (i+1) + (j+1)*N;
 
-geometry.faces.push(new THREE.Face3(i1, i2, i3));
-geometry.faces.push(new THREE.Face3(i2, i3, i4));
+    geometry.faces.push(new THREE.Face3(i1, i2, i3));
+    geometry.faces.push(new THREE.Face3(i2, i3, i4));
 
 
-geometry.faceVertexUvs[0].push([new THREE.Vector2(1, 0),
-    new THREE.Vector2(0, 0),
-    new THREE.Vector2(1, 1)]); 
+    geometry.faceVertexUvs[0].push([new THREE.Vector2(i/(N-1), j/(N-1)),
+        new THREE.Vector2((i+1)/(N-1), j/(N-1)),
+        new THREE.Vector2((i)/(N-1), (j+1)/(N-1))]); 
 
-geometry.faceVertexUvs[0].push([new THREE.Vector2(0, 0),
-    new THREE.Vector2(1, 1),
-    new THREE.Vector2(0, 1)]);
+    geometry.faceVertexUvs[0].push([new THREE.Vector2((i+1)/(N-1), j/(N-1)),
+        new THREE.Vector2((i)/(N-1), (j+1)/(N-1)),
+        new THREE.Vector2((i+1)/(N-1), (j+1)/(N-1))]);
 }
 
 
@@ -111,8 +111,8 @@ geometry.faceVertexUvs[0].push([new THREE.Vector2(0, 0),
 
                                 
  var loader = new THREE.TextureLoader(); 
- //var tex = loader.load( 'pics/yachik3.jpg' );
- var tex = loader.load( 'pics/grasstile.jpg' );  
+ var tex = loader.load( 'pics/ori.jpg' );
+ //var tex = loader.load( 'pics/grasstile.jpg' );  
 
  var mat = new THREE.MeshBasicMaterial({     
     map: tex,    
